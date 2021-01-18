@@ -1,13 +1,24 @@
 import React from 'react';
 import './App.css';
-import Login from './components/Login';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Home from './components/Home';
+import PageA from './components/PageA';
+import PageB from './components/PageB';
+import Header from './components/Header';
 
 const App: React.FC<{}> = () => {
   return (
-    <div className="App">
-      <h1>App.tsx</h1>
-      <Login id="1" name="satake" age={28} isLive={true} />
-    </div>
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/pagea" component={PageA} />
+          <Route exact path="/pageb" component={PageB} />
+        </Switch>
+      </Router>
+    </>
   );
 };
 
